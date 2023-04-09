@@ -5,11 +5,11 @@
     "node": true
   },
   "extends": [
-    "plugin:vue/vue3-recommended",
+    "plugin:vue/vue3-essential",
     "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
     "standard-with-typescript",
-    "plugin:prettier/recommended",
-    "plugin:jest/recommended"
+    "plugin:prettier/recommended"
   ],
   "overrides": [],
   "parser": "vue-eslint-parser",
@@ -17,13 +17,10 @@
     "ecmaVersion": 2021,
     "parser": "@typescript-eslint/parser",
     "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "project": "tsconfig.json",
+    "project": ["tsconfig.json", "tsconfig.node.json"],
     "extraFileExtensions": [".vue"]
   },
-  "plugins": ["vue", "@typescript-eslint", "jest"],
+  "plugins": ["vue", "@typescript-eslint"],
   "rules": {
     "@typescript-eslint/unbound-method": "off",
     "@typescript-eslint/ban-ts-comment": "off",

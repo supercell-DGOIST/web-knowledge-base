@@ -10,6 +10,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "strict": true,
+    "strictNullChecks": true,
     "jsx": "preserve",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -28,10 +29,8 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "vite.config.ts",
-    "commitlint.config.cjs",
-    "jest.config.js",
-    "cz-config.cjs"
+    "env/vite-env.d.ts"
   ],
+  "exclude": ["src/tests/**/*.spec.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

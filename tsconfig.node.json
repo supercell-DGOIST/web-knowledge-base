@@ -3,7 +3,14 @@
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "strictNullChecks": true,
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.*",
+    "vitest.config.*",
+    "commitlint.config.*",
+    "cz-config.*"
+  ]
 }

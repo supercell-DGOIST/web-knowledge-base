@@ -7,12 +7,14 @@ import {
   functionTag,
   regexpTag,
   dateTag,
+  setTag,
+  mapTag,
+  arrayTag,
+  errorTag,
   deepTags,
   getType,
   isObjOrFn,
 } from './tools';
-
-const [setTag, mapTag, arrayTag] = deepTags;
 
 const getInit = (target: any): any => new target.constructor();
 
@@ -42,9 +44,17 @@ const cloneRegexp = (target: any): RegExp => {
   return result;
 };
 
+const defineFunName = (target: any, name: string): void => {
+  Object.defineProperty(target, 'name', {
+    value: name,
+  });
+};
+
 const cloneFinction = (target: () => void): object => {
   const bodyReg = /(?<={)(.|\n)+(?=})/m;
   const paramReg = /(?<=\().+(?=\)\s+{)/;
+  const name = target.name;
+  let fun: any = null;
   const funStr = target.toString();
   if (target.prototype !== undefined) {
     const param: regExpArray = paramReg.exec(funStr);
@@ -53,18 +63,33 @@ const cloneFinction = (target: () => void): object => {
       if (param != null) {
         const paramStr: string = param.at(0) ?? '';
         const params: string[] = paramStr.split(',') ?? [];
-        return new Function(...params, body.at(0) ?? '');
+        fun = new Function(...params, body.at(0) ?? '');
+        defineFunName(fun, name);
+        return fun;
       }
-      return new Function(body.at(0) ?? '');
+      fun = new Function(body.at(0) ?? '');
+      defineFunName(fun, name);
+      return fun;
     }
-    return function () {};
+    fun = function () {};
+    defineFunName(fun, name);
+    return fun;
   }
+  fun = eval(funStr);
+  defineFunName(fun, name);
+  return fun;
+};
 
-  return eval(funStr);
+const cloneError = (target: Extract<any, any>): Extract<any, any> => {
+  const error = new target.constructor(target.message);
+  error.name = target.name;
+  return error;
 };
 
 const cloneOtherType = (target: any, type: string): any => {
   switch (type) {
+    case errorTag:
+      return cloneError(target);
     case dateTag:
       return new target.constructor(target);
     case symbolTag:

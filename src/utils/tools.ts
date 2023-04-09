@@ -1,8 +1,9 @@
-const arrayTag = '[object Array]';
-const objectTag = '[object Object]';
-const mapTag = '[object Map]';
-const setTag = '[object Set]';
-const argsTag = '[object Arguments]';
+export const arrayTag = '[object Array]';
+export const objectTag = '[object Object]';
+export const mapTag = '[object Map]';
+export const setTag = '[object Set]';
+export const argsTag = '[object Arguments]';
+export const errorTag = '[object Error]';
 
 export const symbolTag = '[object Symbol]';
 export const functionTag = '[object Function]';
