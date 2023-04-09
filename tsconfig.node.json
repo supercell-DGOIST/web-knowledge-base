@@ -5,12 +5,13 @@
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "strictNullChecks": true,
+    "strictNullChecks": true
   },
   "include": [
     "vite.config.*",
     "vitest.config.*",
     "commitlint.config.*",
-    "cz-config.*"
+    "cz-config.*",
+    "playwright.config.*"
   ]
 }
