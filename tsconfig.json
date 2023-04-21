@@ -29,7 +29,7 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "env/vite-env.d.ts"
+    "types/**/*.d.ts"
   ],
   "exclude": ["src/tests/**/*.spec.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -11,15 +11,18 @@
     "*.{vue,js,ts}": [
       "npm run prettier",
       "npm run eslint"
+    ],
+    "*.{css,less}": [
+      "npm run prettier"
     ]
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite build && vite preview",
+    "dev": "vite --c config/server.config.ts",
+    "build": "vue-tsc && vite build -c config/build.config.ts",
+    "preview": "vite build && vite preview -c config/preview.config.ts",
     "prettier": "prettier --write",
-    "eslint": "eslint --fix ./src --ext .vue,.js,.ts",
-    "test:unit": "vitest",
+    "eslint": "eslint --fix ./src",
+    "test:unit": "vitest --c config/vitest.config.ts",
     "test:e2e": "playwright test",
     "coverage": "vitest run --coverage",
     "commit": "git cz"
