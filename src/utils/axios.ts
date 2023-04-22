@@ -9,7 +9,7 @@ import Axios, {
 } from 'axios';
 import { ElMessage } from 'element-plus';
 import { isObject } from './tools';
-import abortControllers from '../store/abort-http';
+import abortControllers from '../stores/abort-http';
 import { toLogin } from '../common/router-methods';
 
 const baseURL = import.meta.env.VITE_BASE_URL;

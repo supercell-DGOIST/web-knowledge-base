@@ -1,20 +1,28 @@
-import { loadEnv, type UserConfig } from 'vite';
+import { type UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import { fileToPath } from './util';
 
-export default (mode: string): UserConfig => {
-  const envMap = loadEnv(mode, fileToPath('env'));
-  console.log(envMap, import.meta.url);
-
+export default (): UserConfig => {
   return {
     envDir: fileToPath('env'),
     resolve: {
       alias: {
         '@': fileToPath('src'), // 设置 `@` 指向 `src` 目录
+        '@views': fileToPath('src/views'), // 设置 `@` 指向 `src` 目录
       },
+      extensions: [
+        '.mjs',
+        '.js',
+        '.mts',
+        '.ts',
+        '.jsx',
+        '.tsx',
+        '.json',
+        '.vue',
+      ],
     },
     plugins: [
       vue(),
