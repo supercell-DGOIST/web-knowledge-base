@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "vite --c config/server.config.ts",
     "build": "vue-tsc && vite build -c config/build.config.ts",
-    "preview": "vite build && vite preview -c config/preview.config.ts",
+    "preview": "vite preview -c config/preview.config.ts",
     "visualizer": "vue-tsc && vite build -c config/build.config.ts --mode visualizer",
     "prettier": "prettier --write",
     "eslint": "eslint --fix ./src",
